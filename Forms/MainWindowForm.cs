@@ -106,7 +106,7 @@ namespace YTNotifier
                         toolStripProgressBar1.Value = 0;
                     });
                     toolStripStatusLabelProgress.Text = string.Format("{0} / {1}", toolStripProgressBar1.Value, totalVideos);
-                    toolStripStatusLabel1.Text = "Loading " + channel.GetChannelName() + " videos, please wait.";
+                    toolStripStatusLabel1.Text = "Loading " + channel.ChannelName + " videos, please wait.";
 
                     CustomSettingDictionary.TryAddEntry(channelName, channel.GetLatestVideo().URL, channel.GetLatestVideo().Date);
 

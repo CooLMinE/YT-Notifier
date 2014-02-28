@@ -5,18 +5,18 @@ namespace YTNotifier.Youtube
 {
     class YouTubeChannnel
     {
-        string _channelName;
+        public string ChannelName { get; private set; }
         readonly List<YouTubeVideo> _videos = new List<YouTubeVideo>();
 
         public YouTubeChannnel(string name, List<YouTubeVideo> videos)
         {
-            _channelName = name;
+            this.ChannelName = name;
             _videos = videos;
         }
 
         public YouTubeVideo GetLatestVideo()
         {
-            return _videos.First();
+            return _videos.FirstOrDefault();
         }
 
         public IEnumerable<YouTubeVideo> GetVideos()
@@ -45,11 +45,6 @@ namespace YTNotifier.Youtube
         public int GetNumberOfVideosAvailable()
         {
             return _videos.Count;
-        }
-
-        public string GetChannelName()
-        {
-            return _channelName;
         }
     }
 }

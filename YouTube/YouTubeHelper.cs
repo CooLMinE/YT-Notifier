@@ -14,7 +14,6 @@ namespace YTNotifier.Youtube
     {
         public static YouTubeChannnel GetYoutubeChannel(string channelName)
         {
-            //string _channelURL = string.Format(SSecure.Unprotect("aHR0cDovL2dkYXRhLnlvdXR1YmUuY29tL2ZlZWRzL2Jhc2UvdXNlcnMvezB9L3VwbG9hZHM/b3JkZXJieT11cGRhdGVkJmFsdD1yc3MmY2xpZW50PXl0YXBpLXlvdXR1YmUtcnNzLXJlZGlyZWN0JnY9MiZtYXgtcmVzdWx0cz01MA=="), channelName);
             string _channelURL = string.Format(SSecure.Unprotect("aHR0cDovL2dkYXRhLnlvdXR1YmUuY29tL2ZlZWRzL2Jhc2UvdXNlcnMvezB9L3VwbG9hZHM/YWx0PXJzcyZjbGllbnQ9eXRhcGkteW91dHViZS1yc3MtcmVkaXJlY3Qmdj0yJm1heC1yZXN1bHRzPTUw"), channelName);
 
             WebRequest request = WebRequest.Create(_channelURL);
