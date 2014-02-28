@@ -1,2 +1,4 @@
 bin/
 obj/
+privateKey.snk
+publicKey.snk
