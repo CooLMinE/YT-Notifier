@@ -7,6 +7,7 @@ using System.Media;
 using System.Windows.Forms;
 using YTNotifier.Forms;
 using YTNotifier.Helper_Classes;
+using YTNotifier.Properties;
 using YTNotifier.Youtube;
 
 namespace YTNotifier
@@ -60,9 +61,9 @@ namespace YTNotifier
         private void LoadApplicationSettings()
         {
             // check number of videos settings
-            numberOfVideosToolStripMenu.DropDownItems.OfType<ToolStripMenuItem>()
-                .Where(x => x.Text == Properties.Settings.Default.NumberOfVideosToDisplay.ToString())
-                .First().Checked = true;
+            numberOfVideosToolStripMenu.DropDownItems
+                .OfType<ToolStripMenuItem>()
+                .First(x => x.Text == Settings.Default.NumberOfVideosToDisplay.ToString()).Checked = true;
 
             //check if minimize on tray
             minimizeToTrayToolStripMenuItem.Checked = Properties.Settings.Default.MinimizeToTray;
@@ -74,9 +75,9 @@ namespace YTNotifier
             //check videos interval
             if (Properties.Settings.Default.CheckForNewVideosInterval != 0)
             {
-                checkForNewVideosToolStripMenu.DropDownItems.OfType<ToolStripMenuItem>()
-                    .Where(x => x.Text == CustomMillisecondConversion.ConvertFromMilliseconds(Properties.Settings.Default.CheckForNewVideosInterval))
-                        .First().Checked = true;
+                checkForNewVideosToolStripMenu.DropDownItems
+                    .OfType<ToolStripMenuItem>()
+                        .First(x => x.Text == CustomMillisecondConversion.ConvertFromMilliseconds(Settings.Default.CheckForNewVideosInterval)).Checked = true;
 
                 if (Properties.Settings.Default.CheckForNewVideos)
                 {
@@ -188,7 +189,10 @@ namespace YTNotifier
 
         public bool ChannelAlreadyExistsInList(string channelName)
         {
-            return listBoxControlChannels.Items.OfType<string>().Where(x => x.Equals(channelName.Trim(), StringComparison.InvariantCultureIgnoreCase)).Select(x => x).Count() > 0;
+            return listBoxControlChannels.Items.OfType<string>()
+                .Where(x => x.Equals(channelName.Trim(), StringComparison.InvariantCultureIgnoreCase))
+                .Select(x => x)
+                .Any();
         }
 
         private bool TryAddChannel(string channelName)
